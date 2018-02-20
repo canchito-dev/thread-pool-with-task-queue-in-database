@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+      	
+	<bean id="task1Queue" class="com.canchitodev.example.threadpool.service.TaskQueue" scope="prototype">
+		<property name="runnableName" value="task1Runnable" />
+		<property name="poolName" value="task1Queue" />
+		<property name="corePoolSize" value="2" />
+		<property name="maximumPoolSize" value="5" />
+		<property name="keepAliveTimeInMillis" value="300000"/>
+		<property name="acquireWaitTimeInMillis" value="5000"/>
+		<property name="maxTasksPerAcquisition" value="2"/>
+	</bean>
+	
+	<bean id="task2Queue" class="com.canchitodev.example.threadpool.service.TaskQueue" scope="prototype">
+		<property name="runnableName" value="task2Runnable" />
+		<property name="poolName" value="task2Queue" />
+		<property name="corePoolSize" value="2" />
+		<property name="maximumPoolSize" value="5" />
+		<property name="keepAliveTimeInMillis" value="300000"/>
+		<property name="acquireWaitTimeInMillis" value="5000"/>
+		<property name="maxTasksPerAcquisition" value="2"/>
+	</bean>
+</beans>
