@@ -1,4 +1,5 @@
 # thread-pool-with-task-queue-in-database
+Simulates multiple threadpools of workers that share a same database table with the pending tasks
 
 ## Download
 Help us find bugs, add new features or simply just feel free to use it. Download **Bootstrap Sign In Web Componentr** from our [ GitHub](https://github.com/canchito-dev/thread-pool-with-task-queue-in-database) site.
