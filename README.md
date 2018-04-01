@@ -44,10 +44,10 @@ If two or more async job executor are started, they all will be raising for pull
 ### Async Executor's Configuration
 The async job executor configuration is done by modifying two XML files (found under `src/main/resources/`):
 
-*   `task-queue-beans.xml`: specified how each **[CANCHITO-WORKFLOW-MANAGER](http://canchito-dev.com/projects/cwm)** [(CWM)](https://github.com/canchito-dev/canchito-workflow-manager)'s async job executor, dedicated to process a specific task is configured
+*   `task-queue-beans.xml`: specified how each async job executor, dedicated to process a specific task is configured
 *   `task-runnable-beans.xml`: here you will find the _Runnable_ classes that are used by each [CWM](https://github.com/canchito-dev/canchito-workflow-manager)'s async job executor to execute the task
 
-As you can see, each queue used by the **[CANCHITO-WORKFLOW-MANAGER](http://canchito-dev.com/projects/cwm)** [(CWM)](https://github.com/canchito-dev/canchito-workflow-manager)'s async job executor needs to have some configuration. Let's describe those parameters found in `task-queue-beans.xml` file.
+As you can see, each queue used by the async job executor needs to have some configuration. Let's describe those parameters found in `task-queue-beans.xml` file.
 
 *   `runnableName`: the id of the runnable that and instance is initialized and afterward executed. This is the id which relates to the information found in `task-runnable-beans.xml`.
 *   `poolName`: the name of the thread pool
