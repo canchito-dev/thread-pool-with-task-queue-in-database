@@ -58,7 +58,7 @@ Following [Frederik Heremans](https://www.linkedin.com/in/frederikheremans/) r
 ## Async Job Executor
 Put in simple words, **[CANCHITO-WORKFLOW-MANAGER](https://github.com/canchito-dev/canchito-workflow-manager)** [(CWM)](http://canchito-dev.com/projects/cwm)'s async job executor are individual threads that are started once when the application is started. Each thread starts a thread pool that reuses a (configurable) fixed number of threads operating off database table called _CWM\_TASKS\_QUEUE_ and acting as a priority blocking list, using the provided ThreadFactory to create new threads when needed. At any point, at most _n_ threads will be active processing tasks.
 
-![](http://www.canchito-dev.com/public/blog/wp-content/uploads/2018/03/Task-Queue-Service.png)
+![CANCHITO-DEV: Task Queue Service](http://canchito-dev.com/img/cwm/userguide/canchito_dev_task_queue_service.png)
 
 Periodically, pending tasks are pulled from the database. The number of pending tasks that are pulled at once, depends on the number of available threads on **[CANCHITO-WORKFLOW-MANAGER](http://canchito-dev.com/projects/cwm)** [(CWM)](https://github.com/canchito-dev/canchito-workflow-manager)'s async job executor for a specific task type. If additional tasks are submitted when all threads are active, they will reside in the database until a thread is available.
 
@@ -71,13 +71,13 @@ If two or more **[CANCHITO-WORKFLOW-MANAGER](http://canchito-dev.com/projects/cw
 ### Async Executor's Design
 In order to understand the way long-running tasks are added to the queue, lets have a look at a very simple workflow as the one in the below image. As you can see, it is composed of a start event, a copy task (which is a service task), and an end event.
 
-![CANCHITO-DEV: async-job-executor-load-queue](http://canchito-dev.com/img/cwm/userguide/canchito_dev_copy-task-sample-workflow.png)
+![CANCHITO-DEV: Copy Task sample workflow](http://canchito-dev.com/img/cwm/userguide/canchito_dev_copy_task_sample_workflow.png)
 
 The copy task is a long-running service task, which needs to be processed by the async job executor. Long-runing tasks in **[CANCHITO-WORKFLOW-MANAGER](http://canchito-dev.com/projects/cwm)** [(CWM)](https://github.com/canchito-dev/canchito-workflow-manager) extend _AbstractTaskCanchitoBehavior_, which at the same time extend from [Flowable](https://www.flowable.org/)'s _TaskActivityBehavior_ class.
 
 The _TaskActivityBehavior_ parent class for all BPMN 2.0 task types such as ServiceTask, ScriptTask, UserTask, etc. When used on its own, it behaves just as a pass-through activity. This class provides two methods: `execute()`and `trigger()`. The class _AbstractTaskCanchitoBehavior_ provides a two methods: `submitTask()` and `checkSignal(DelegateExecution execution)`. These four methods are the pillars for creating a long-running task implementing the Signallable Flowable Behavior instead of adding two BPMN task (send task and receive task) in your process diagram.
 
-![CANCHITO-DEV: CWM's Async Executor Design](http://www.canchito-dev.com/public/blog/wp-content/uploads/2018/03/Async-Executor-Design.png)
+![CANCHITO-DEV: CWM's Async Executor Design](http://canchito-dev.com/img/cwm/userguide/canchito_dev_async_executor_design.png)
 
 The `execute(DelegateExecution execution)` method is invoked when the service task is entered. In our case, it is typically used for data valiation and preparation. There is no business logic here. For instance, it validates that all the needed information for the task to be correctly executed has valid values.
 
