@@ -1,3 +1,6 @@
+[![Buy Me a Coffee](images/donate_with_crypto.PNG)](https://commerce.coinbase.com/checkout/faf64f90-2e80-46ee-aeba-0fde14cbeb46)
+[![Buy Me a Coffee](https://www.paypalobjects.com/en_US/ES/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate?hosted_button_id=GTSXAJQEBZ7XG)
+
 # thread-pool-with-task-queue-in-database
 Simulates multiple threadpools of workers that share a same database table with the pending to be executed tasks resided. This is the solution implemented in the project [**CANCHITO-WORKFLOW-MANAGER (CWM)**](http://canchito-dev.com/projects/cwm) for solving some _"limitations"_ encountered during the integration and implementation of [Flowable](https://www.flowable.org/) BPM, when executing long-running tasks. 
 
